@@ -1,13 +1,12 @@
-<legend class="text-center">Dashboard</legend>
-
-<div style="height: auto; width: 100%;">
-    <p-sidebar position="top" [showCloseIcon]="true" [style]="{'width':'30%'}" [(visible)]="displaySideBar" position="left" [baseZIndex]="9999999" [modal]="false" [showCloseIcon]="false">
-      <div class="header">
-        <img src="https://www.w3schools.com/howto/img_avatar.png"> <br/>
-        <input type='file' (change)="onSelectFile($event)">
-        <p>Your channel</p>
-        <label>{{userDetails.userName}}</label>  <br> <br>
-        <button class="btn btn-success" type="button" (click)="logout()">Logout</button>
-      </div>
-    </p-sidebar>
+<legend>Channel dashboard</legend>
+<div class="row">
+    <div class="col-md-4">
+        <legend>Upload Videos</legend>
+    </div>
+    <div class="col-md-4">
+        <legend>Channel analytics</legend>
+    </div>
+    <div class="col-md-4">
+        <legend>Creator Insider</legend>
+    </div>
 </div>

@@ -4,18 +4,27 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from '../login/guards/auth.guard';
+import { ContainerComponent } from './components/container/container.component';
+import { ContentComponent } from './components/content/content.component';
 
 const routes : Routes = [
   {
-    path:'dashboard', component:DashboardComponent,
-    canActivate:[AuthGuard]
-  },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+    path: '',
+    component:ContainerComponent,
+    canActivate:[AuthGuard],
+    children: [
+      { path:'dashboard', component:DashboardComponent },
+      { path:'content', component:ContentComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+    ]
+  }
 ];
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    ContainerComponent,
+    ContentComponent
   ],
   imports: [
     CommonModule,
