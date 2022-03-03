@@ -1,0 +1,17 @@
+.header {
+    background-color: #f1f1f1;
+    padding: 20px 10px;
+  }
+  
+  img {
+    border-radius: 50%;
+    height: 40%;
+    width: 40%;
+  }
+  
+  .menu {
+    max-height: 70%;
+    min-height: 30%;
+    overflow-y: scroll;
+  }
+  
