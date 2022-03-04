@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthGuard } from '../login/guards/auth.guard';
 import { ContainerComponent } from './components/container/container.component';
 import { ContentComponent } from './components/content/content.component';
+import { CustomizationComponent } from './components/customization/customization.component';
 
 const routes : Routes = [
   {
@@ -15,6 +16,7 @@ const routes : Routes = [
     children: [
       { path:'dashboard', component:DashboardComponent },
       { path:'content', component:ContentComponent },
+      { path:'customization', component:CustomizationComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   }
@@ -24,12 +26,13 @@ const routes : Routes = [
   declarations: [
     DashboardComponent,
     ContainerComponent,
-    ContentComponent
+    ContentComponent,
+    CustomizationComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forChild(routes)
   ]
 })
 export class DashboardModule { }

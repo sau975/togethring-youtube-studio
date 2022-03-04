@@ -2,12 +2,12 @@
     <div class="col-md-3">
         <div class="header">
             <img src="https://www.w3schools.com/howto/img_avatar.png"> <br/>
-            <input type='file' (change)="onSelectFile($event)">
             <p>Your channel <br> {{userDetails.userName}}</p>
         </div>
         <div class="menu">
             <a [routerLink]="'dashboard'">Dashboard</a> <br>
-            <a [routerLink]="'content'">Content</a>
+            <a [routerLink]="'content'">Content</a> <br>
+            <a [routerLink]="'customization'">Customization</a>
         </div>
         <button class="btn btn-success" type="button" (click)="logout()">Logout</button>
     </div>

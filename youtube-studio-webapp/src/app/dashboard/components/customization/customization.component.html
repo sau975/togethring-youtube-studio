@@ -1,0 +1,27 @@
+<legend>Channel customization</legend>
+<div>
+    <p-table #dt [globalFilterFields]="['name']" *ngIf="lists" [value]="lists" [reorderableColumns]="true" responsiveLayout="scroll" [scrollable]="true"   scrollHeight="47vh" [responsive]="true"
+    (onRowReorder)="onReorder($event)">
+    <ng-template pTemplate="colgroup" let-columns>
+    <colgroup>
+        <col style="width:25px">
+        <col style="width:200px;">
+    </colgroup>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rt let-index="rowIndex">
+    <tr [pReorderableRow]="index">
+        <td style="margin-right: 20px;">
+        <span class="pi pi-bars"></span>
+        <!-- <span class="pi pi-bars" pReorderableRowHandle></span> -->
+        </td>
+        <td>
+        <div class="p-fluid" >
+            <div class="row">
+            <div class="col"><label style="font-weight: bold;">{{rt.name}}</label></div>
+            </div>
+        </div>
+        </td>
+    </tr>
+    </ng-template>
+    </p-table>
+</div>
