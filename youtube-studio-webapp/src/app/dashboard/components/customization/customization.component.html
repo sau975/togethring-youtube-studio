@@ -1,6 +1,37 @@
-<legend>Channel customization</legend>
+<br/>
+<div class="card">
+    <h5>Channel customization</h5>
+    <p-tabView>
+        <p-tabPanel header="Layout">
+        </p-tabPanel>
+        <p-tabPanel header="Branding">
+            <legend>Picture</legend>
+            <p>Your profile picture will appear where your channel is presented on YouTube, like next to your videos and comments</p>
+            <div class="row">
+                <div class="col-md-6"> <br>
+                    <!-- <label>{{image}}</label> -->
+                    <img src="https://www.w3schools.com/howto/img_avatar.png"> <br>
+                </div>
+                <div class="col-md-4">
+                    <p>It’s recommended to use a picture that’s at least 98 x 98 pixels and 4MB or less. Use a PNG or GIF (no animations) file. Make sure your picture follows the YouTube Community Guidelines. 
+                    </p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Change"></p-fileUpload>
+                        </div>
+                        <div class="col-md-6">
+                            <p-button label="Remove"></p-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="Basic info">
+        </p-tabPanel>
+    </p-tabView>
+</div>
 
-<div>
+<!-- <div>
     <p-orderList [value]="products" [listStyle]="{'max-height':'30rem'}" header="List of Products" filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
         <ng-template let-product pTemplate="item">
             <div class="product-item">
@@ -19,4 +50,4 @@
             </div>
         </ng-template>
     </p-orderList>    
-</div>
+</div> -->

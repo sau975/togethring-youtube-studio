@@ -13,12 +13,18 @@ export class CustomizationComponent implements OnInit {
     { id: 3, name: 'Mobile', image: "", price: 20, category: "Electronic", inventoryStatus: "Available"},
     { id: 4, name: 'Pen', image: "", price: 25, category: "Stationary", inventoryStatus: "Available"}
   ];
+  image!: string;
 
   constructor() { }
 
   ngOnInit() {}
 
   onReorder(value:any){
+    console.log(value);
+  }
+
+  onBasicUploadAuto(value:any){
+    this.image = value;
     console.log(value);
   }
 }
