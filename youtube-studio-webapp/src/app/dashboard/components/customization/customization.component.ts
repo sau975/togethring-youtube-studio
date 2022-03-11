@@ -10,10 +10,11 @@ export class CustomizationComponent implements OnInit {
   products: IProduct[] = [
     { id: 1, name: 'Book', image: "", price: 12, category: "Stationary", inventoryStatus: "Available"},
     { id: 2, name: 'Laptop', image: "", price: 15, category: "Electronic", inventoryStatus: "Available"},
-    { id: 3, name: 'Mobile', image: "", price: 20, category: "Electronic", inventoryStatus: "Available"},
-    { id: 4, name: 'Pen', image: "", price: 25, category: "Stationary", inventoryStatus: "Available"}
   ];
   image!: string;
+  show: boolean = false;
+  userName: string = "Saurav";
+  email!: string;
 
   constructor() { }
 
@@ -26,6 +27,10 @@ export class CustomizationComponent implements OnInit {
   onBasicUploadAuto(value:any){
     this.image = value;
     console.log(value);
+  }
+
+  editName(){
+    this.show = true;
   }
 }
 

@@ -1,16 +1,82 @@
-<br/>
 <div class="card">
+    <br/>
     <h5>Channel customization</h5>
+    <div style="text-align: right;">
+        <p-button label="View Channel"></p-button>
+        <p-button label="Cancel"></p-button>
+        <p-button label="Publish"></p-button>
+    </div>
     <p-tabView>
         <p-tabPanel header="Layout">
+            <legend><b>Video spotlight</b></legend>
+            <p>Add a video to the top of your channel homepage</p>
+
+            <p-card>
+                <div class="row">
+                    <img class="icon" src="https://www.w3schools.com/howto/img_avatar.png"> <br>
+                    <div class="col-md-8">
+                        <legend><b>Channel trailer for people who haven't subscribed</b></legend>
+                        <p>Share a preview of your channel shown with people who haven’t subscribed yet.</p>        
+                    </div>
+                    <div class="col-md-2">
+                        <p-button label="Add"></p-button>
+                    </div>
+                </div>
+            </p-card> <br>
+
+            <p-card>
+                <div class="row">
+                    <img class="icon" src="https://www.w3schools.com/howto/img_avatar.png"> <br>
+                    <div class="col-md-8">
+                        <legend><b>Featured video for returning subscribers</b></legend>
+                        <p>Highlight a video for your subscribers to watch. This video won’t be shown again at the top of your page for subscribers who have watched it.</p>        
+                    </div>
+                    <div class="col-md-2">
+                        <p-button label="Add"></p-button>
+                    </div>
+                </div>
+            </p-card>  <br>
+
+            <div class="row">
+                <div class="col-md-9">
+                    <legend><b>Featured sections</b></legend>
+                    <p>Customize the layout of your channel homepage with up to 12 sections</p>
+                </div>
+                <div class="col-md-3">
+                    <p-button label="Add Section"></p-button>
+                </div>
+            </div>
+
+            <div>
+                <p-orderList [value]="products" [listStyle]="{'max-height':'30rem'}" [dragdrop]="true">
+                    <ng-template let-product pTemplate="item">
+                        <div class="product-item">
+                            <div class="image-container">
+                                    <img src="assets/showcase/images/demo/product/{{product.image}}" [alt]="product.name" class="product-image" />
+                            </div>
+                            <div class="product-list-detail">
+                                <h5 class="mb-2">{{product.name}}</h5>
+                                <i class="pi pi-tag product-category-icon"></i>
+                                <span class="product-category">{{product.category}}</span>
+                            </div>
+                            <div class="product-list-action">
+                                <h6 class="mb-2">${{product.price}}</h6>
+                                <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
+                            </div>
+                        </div>
+                    </ng-template>
+                </p-orderList>    
+            </div>            
+
         </p-tabPanel>
+
         <p-tabPanel header="Branding">
             <legend>Picture</legend>
             <p>Your profile picture will appear where your channel is presented on YouTube, like next to your videos and comments</p>
+            
             <div class="row">
                 <div class="col-md-6"> <br>
-                    <!-- <label>{{image}}</label> -->
-                    <img src="https://www.w3schools.com/howto/img_avatar.png"> <br>
+                    <img id="picture" src="https://www.w3schools.com/howto/img_avatar.png"> <br>
                 </div>
                 <div class="col-md-4">
                     <p>It’s recommended to use a picture that’s at least 98 x 98 pixels and 4MB or less. Use a PNG or GIF (no animations) file. Make sure your picture follows the YouTube Community Guidelines. 
@@ -25,29 +91,52 @@
                     </div>
                 </div>
             </div>
+
+            <legend>Banner image</legend>
+            <p>This image will appear across the top of your channel</p>
+            <div class="row">
+                <div class="col-md-6"> <br>
+                    <img id="banner" src="https://www.w3schools.com/howto/img_avatar.png"> <br>
+                </div>
+                <div class="col-md-4">
+                    <p>For the best results on all devices, use an image that’s at least 2048 x 1152 pixels and 6MB or less.</p>
+                    <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Upload"></p-fileUpload>
+                </div>
+            </div>
+
+            <legend>Video watermark</legend>
+            <p>The watermark will appear on your videos in the right-hand corner of the video player</p>
+            <div class="row">
+                <div class="col-md-6"> <br>
+                    <img id="watermark" src="https://www.w3schools.com/howto/img_avatar.png"> <br>
+                </div>
+                <div class="col-md-4">
+                    <p>An image that’s 150 x 150 pixels is recommended. Use a PNG, GIF (no animations), BMP, or JPEG file that’s 1MB or less.</p>
+                    <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Upload"></p-fileUpload>
+                </div>
+            </div>
         </p-tabPanel>
+
         <p-tabPanel header="Basic info">
+            <legend><b>Channel name and description</b></legend>
+            <p>Choose a channel name that represents you and your content. Changes made to your name and picture are visible only on YouTube and not other Google services.</p>
+            
+            <div *ngIf="show == false">
+                <legend>{{userName}} <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text" (click)="editName()"></button></legend>
+            </div>
+
+            <div *ngIf="show == true">
+                <input type="text" pInputText [(ngModel)]="userName"> 
+            </div> <br>
+
+            <textarea rows="5" cols="30" pInputTextarea placeholder="Description"></textarea>
+
+            <div>
+                <legend><b>Contact info</b></legend>
+                <p>Let people know how to contact you with business inquiries. The email address you enter may appear in the About section of your channel and be visible to viewers.</p>
+                <input type="text" pInputText placeholder="Email" [(ngModel)]="email"> 
+            </div>
         </p-tabPanel>
     </p-tabView>
 </div>
 
-<!-- <div>
-    <p-orderList [value]="products" [listStyle]="{'max-height':'30rem'}" header="List of Products" filterBy="name" filterPlaceholder="Filter by name" [dragdrop]="true">
-        <ng-template let-product pTemplate="item">
-            <div class="product-item">
-                <div class="image-container">
-                        <img src="assets/showcase/images/demo/product/{{product.image}}" [alt]="product.name" class="product-image" />
-                </div>
-                <div class="product-list-detail">
-                    <h5 class="mb-2">{{product.name}}</h5>
-                    <i class="pi pi-tag product-category-icon"></i>
-                    <span class="product-category">{{product.category}}</span>
-                </div>
-                <div class="product-list-action">
-                    <h6 class="mb-2">${{product.price}}</h6>
-                    <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
-                </div>
-            </div>
-        </ng-template>
-    </p-orderList>    
-</div> -->
