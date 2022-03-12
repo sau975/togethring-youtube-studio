@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-customization',
@@ -13,12 +14,16 @@ export class CustomizationComponent implements OnInit {
   ];
   image!: string;
   show: boolean = false;
-  userName: string = "Saurav";
+  userName!: string;
   email!: string;
 
-  constructor() { }
+  constructor(
+    private dashboardService: DashboardService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userName = String(localStorage.getItem('userName'));
+  }
 
   onReorder(value:any){
     console.log(value);
@@ -29,8 +34,28 @@ export class CustomizationComponent implements OnInit {
     console.log(value);
   }
 
-  editName(){
+  showEditUserName(){
     this.show = true;
+  }
+
+  publish(){
+    this.editUserName();
+    this.dashboardService.userName(this.userName);
+  }
+
+  cancel(){
+    this.show = false;
+    this.userName = String(localStorage.getItem('userName'));
+  }
+
+  gotPhoto(element:any) { 
+    var file = element.files[0];
+
+    //I want to save 'file' to local storage here :-(
+  }
+
+  editUserName(){
+    localStorage.setItem('userName', this.userName);
   }
 }
 

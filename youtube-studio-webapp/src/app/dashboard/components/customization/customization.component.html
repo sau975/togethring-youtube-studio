@@ -3,8 +3,8 @@
     <h5>Channel customization</h5>
     <div style="text-align: right;">
         <p-button label="View Channel"></p-button>
-        <p-button label="Cancel"></p-button>
-        <p-button label="Publish"></p-button>
+        <p-button (click)="cancel()" label="Cancel"></p-button>
+        <p-button (click)="publish()" label="Publish"></p-button>
     </div>
     <p-tabView>
         <p-tabPanel header="Layout">
@@ -83,6 +83,7 @@
                     </p>
                     <div class="row">
                         <div class="col-md-6">
+                            <!-- <input type="file" accept="image/*;capture=camera" onchange="gotPhoto(this)"> -->
                             <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Change"></p-fileUpload>
                         </div>
                         <div class="col-md-6">
@@ -122,7 +123,7 @@
             <p>Choose a channel name that represents you and your content. Changes made to your name and picture are visible only on YouTube and not other Google services.</p>
             
             <div *ngIf="show == false">
-                <legend>{{userName}} <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text" (click)="editName()"></button></legend>
+                <legend>{{userName}} <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text" (click)="showEditUserName()"></button></legend>
             </div>
 
             <div *ngIf="show == true">

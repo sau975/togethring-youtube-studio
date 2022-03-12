@@ -32,6 +32,7 @@ export class RegistrationFormComponent implements OnInit {
   register(){
     let data:IRegistration  = Object.assign({}, this.model, this.form.value);
     localStorage.setItem('user', JSON.stringify(data));
+    localStorage.setItem('userName', data.userName);
     let user:any = localStorage.getItem('user');
     let userRegistedDetails = JSON.parse(user);
     alert("You have successfully Registered. Your User Name is " + userRegistedDetails.userName + " and Password is " + userRegistedDetails.password);
