@@ -14,6 +14,7 @@ export class ContainerComponent implements OnInit {
   displaySideBar: boolean = true;
   userDetails: any;
   userName!: string;
+  profileImage: any;
 
   constructor(
     private authService: AuthService,
@@ -24,10 +25,12 @@ export class ContainerComponent implements OnInit {
   ngOnInit(): void {
     let user:any = localStorage.getItem('user');
     this.userName = String(localStorage.getItem('userName'));
+    this.profileImage = localStorage.getItem('profileImage');
     this.userDetails = JSON.parse(user);
   }
 
   userName$ = this.dashboardService.userName$.pipe(tap(res => this.userName = res)).subscribe();
+  profileImage$ = this.dashboardService.profileImage$.pipe(tap(res => this.profileImage = res)).subscribe();
 
   onSelectFile(event:any) {
     if (event.target.files && event.target.files[0]) {

@@ -11,7 +11,7 @@
   
   .menu {
     max-height: 70%;
-    min-height: 50%;
+    min-height: 20%;
     overflow-y: scroll;
   }
   

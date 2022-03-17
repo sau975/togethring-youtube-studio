@@ -11,6 +11,12 @@ export class DashboardService {
   userName(userName: string) {
     this.userNameSubject.next(userName);
   }
+
+  private profileImageSubject = new BehaviorSubject<string>("");
+  profileImage$ = this.profileImageSubject.asObservable();
+  profileImage(profileImage: string) {
+    this.profileImageSubject.next(profileImage);
+  }
   
   constructor() { }
 }

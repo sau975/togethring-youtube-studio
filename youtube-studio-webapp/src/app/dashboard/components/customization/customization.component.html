@@ -76,18 +76,18 @@
             
             <div class="row">
                 <div class="col-md-6"> <br>
-                    <img id="picture" src="https://www.w3schools.com/howto/img_avatar.png"> <br>
+                    <img id="picture" [src]="profileImage"> <br/>
                 </div>
                 <div class="col-md-4">
                     <p>It’s recommended to use a picture that’s at least 98 x 98 pixels and 4MB or less. Use a PNG or GIF (no animations) file. Make sure your picture follows the YouTube Community Guidelines. 
                     </p>
                     <div class="row">
-                        <div class="col-md-6">
-                            <!-- <input type="file" accept="image/*;capture=camera" onchange="gotPhoto(this)"> -->
-                            <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Change"></p-fileUpload>
+                        <div class="col-md-8">
+                            <input type='file' (change)="onSelectProfileFile($event)" />
+                            <!-- <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" (onUpload)="onSelectFile($event)" [auto]="true" chooseLabel="Change"></p-fileUpload> -->
                         </div>
-                        <div class="col-md-6">
-                            <p-button label="Remove"></p-button>
+                        <div class="col-md-4">
+                            <p-button label="Remove" (click)="removeProfileImage()"></p-button>
                         </div>
                     </div>
                 </div>
@@ -97,11 +97,12 @@
             <p>This image will appear across the top of your channel</p>
             <div class="row">
                 <div class="col-md-6"> <br>
-                    <img id="banner" src="https://www.w3schools.com/howto/img_avatar.png"> <br>
+                    <img id="banner" [src]="bannerImage"> <br>
                 </div>
                 <div class="col-md-4">
                     <p>For the best results on all devices, use an image that’s at least 2048 x 1152 pixels and 6MB or less.</p>
-                    <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Upload"></p-fileUpload>
+                    <!-- <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" (onUpload)="onSelectFile($event)" [auto]="true" chooseLabel="Upload"></p-fileUpload> -->
+                    <input type='file' (change)="onSelectBannerFile($event)" />
                 </div>
             </div>
 
@@ -109,11 +110,12 @@
             <p>The watermark will appear on your videos in the right-hand corner of the video player</p>
             <div class="row">
                 <div class="col-md-6"> <br>
-                    <img id="watermark" src="https://www.w3schools.com/howto/img_avatar.png"> <br>
+                    <video [src]="watermark" height="200" controls></video> <br/>
                 </div>
                 <div class="col-md-4">
                     <p>An image that’s 150 x 150 pixels is recommended. Use a PNG, GIF (no animations), BMP, or JPEG file that’s 1MB or less.</p>
-                    <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Upload"></p-fileUpload>
+                    <input type='file' (change)="onSelectWatermarkFile($event)" />
+                    <!-- <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" (onUpload)="onSelectFile($event)" [auto]="true" chooseLabel="Upload"></p-fileUpload> -->
                 </div>
             </div>
         </p-tabPanel>
